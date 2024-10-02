@@ -2,7 +2,7 @@ const request = require('supertest');
 const app = require('../service');
 const { Role, DB } = require('../database/database.js');
 
-const testUser = { name: 'pizza diner', email: 'reg@test.com', password: 'a' };
+const testUser = { name: 'authRouter test user', email: 'reg@test.com', password: 'a' };
 let testUserAuthToken;
 
 function randomName() {
@@ -11,8 +11,8 @@ function randomName() {
 
 async function createAdminUser() {
   let user = { password: 'toomanysecrets', roles: [{ role: Role.Admin }] };
-  user.name = randomName();
-  user.email = user.name + '@admin.com';
+  user.name = 'authRouter testAdmin';
+  user.email = randomName() + '@admin.com';
 
   user = await DB.addUser(user);
 
