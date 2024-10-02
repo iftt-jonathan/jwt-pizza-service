@@ -96,7 +96,6 @@ test("createStore", async () => {
     .set("Authorization", `Bearer ${adminUserAuthToken}`);
   expect(res.statusCode).toEqual(200);
   expect(res.body.name).toEqual(storeData.name);
-  testStoredId = res.body.id;
 });
 
 test("deleteStore", async () => {
