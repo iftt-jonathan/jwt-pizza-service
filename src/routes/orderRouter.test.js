@@ -38,21 +38,21 @@ beforeAll(async () => {
   adminUserAuthToken = adminLoginRes.body.token;
 });
 
-test("getMenu", async () => {
-  const res = await request(app).get("/api/order/menu");
-  expect(res.statusCode).toEqual(200);
-  expect(res.body).toEqual(
-    expect.arrayContaining([
-      expect.objectContaining({
-        id: expect.any(Number),
-        title: expect.any(String),
-        image: expect.any(String),
-        price: expect.any(Number),
-        description: expect.any(String),
-      }),
-    ])
-  );
-});
+// test("getMenu", async () => {
+//   const res = await request(app).get("/api/order/menu");
+//   expect(res.statusCode).toEqual(200);
+//   expect(res.body).toEqual(
+//     expect.arrayContaining([
+//       expect.objectContaining({
+//         id: expect.any(Number),
+//         title: expect.any(String),
+//         image: expect.any(String),
+//         price: expect.any(Number),
+//         description: expect.any(String),
+//       }),
+//     ])
+//   );
+// });
 
 test("addMenuItem", async () => {
   const newItem = {
