@@ -56,8 +56,8 @@ beforeAll(async () => {
 
 test("addMenuItem", async () => {
   const newItem = {
-    title: "digital",
-    description: "so many numbers",
+    title: "Buffalo Chicken",
+    description: "For the brave",
     image: "pizza.png",
     price: 0.0001,
   };
@@ -73,8 +73,8 @@ test("addMenuItem", async () => {
 
 test("addMenuItem no admin role", async () => {
   const newItem = {
-    title: "digital",
-    description: "so many numbers",
+    title: "Buffalo Chicken",
+    description: "For the brave",
     image: "pizza.png",
     price: 0.0001,
   };
@@ -98,7 +98,7 @@ test("createOrder", async () => {
   const newOrder = {
     franchiseId: 1,
     storeId: 1,
-    items: [{ menuId: 1, description: "digital", price: 0.0001 }],
+    items: [{ menuId: 6, description: "Buffalo Chicken", price: 0.0001 }],
   };
   const res = await request(app)
     .post("/api/order")
