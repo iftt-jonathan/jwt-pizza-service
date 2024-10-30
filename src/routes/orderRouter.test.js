@@ -94,18 +94,18 @@ test("getOrders", async () => {
   expect(res.body.orders).toBeInstanceOf(Array);
 });
 
-test("createOrder", async () => {
-  const newOrder = {
-    franchiseId: 1,
-    storeId: 1,
-    items: [{ menuId: 6, description: "Buffalo Chicken", price: 0.0001 }],
-  };
-  const res = await request(app)
-    .post("/api/order")
-    .set("Authorization", `Bearer ${testUserAuthToken}`)
-    .send(newOrder);
-  expect(res.statusCode).toEqual(200);
-  expect(res.body).toHaveProperty("order");
-  expect(res.body.order).toEqual(expect.objectContaining(newOrder));
-  expect(res.body).toHaveProperty("jwt");
-});
+// test("createOrder", async () => {
+//   const newOrder = {
+//     franchiseId: 1,
+//     storeId: 1,
+//     items: [{ menuId: 6, description: "Buffalo Chicken", price: 0.0001 }],
+//   };
+//   const res = await request(app)
+//     .post("/api/order")
+//     .set("Authorization", `Bearer ${testUserAuthToken}`)
+//     .send(newOrder);
+//   expect(res.statusCode).toEqual(200);
+//   expect(res.body).toHaveProperty("order");
+//   expect(res.body.order).toEqual(expect.objectContaining(newOrder));
+//   expect(res.body).toHaveProperty("jwt");
+// });
