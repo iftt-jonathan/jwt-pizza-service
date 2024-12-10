@@ -1,5 +1,6 @@
 const express = require('express');
 const metrics = require('./metrics.js');
+const logger = require('./logger.js');
 const { authRouter, setAuthUser } = require('./routes/authRouter.js');
 const orderRouter = require('./routes/orderRouter.js');
 const franchiseRouter = require('./routes/franchiseRouter.js');
@@ -19,6 +20,7 @@ app.use((req, res, next) => {
 
 // Middleware for metrics
 app.use(metrics.requestTracker.bind(metrics));
+app.use(logger.httpLogger.bind(logger));
 
 const apiRouter = express.Router();
 app.use('/api', apiRouter);
@@ -49,6 +51,7 @@ app.use('*', (req, res) => {
 
 // Default error handler for all exceptions and errors.
 app.use((err, req, res, next) => {
+  logger.unhandledErrorLogger(err);
   res.status(err.statusCode ?? 500).json({ message: err.message, stack: err.stack });
   next();
 });
